@@ -1,0 +1,14 @@
+# Webots temporary files
+*.log
+*.tmp
+*.wbo
+*.png
+*.backup
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python/other build artifacts (if any)
+__pycache__/
+*.pyc
