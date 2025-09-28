@@ -2,7 +2,6 @@
 *.log
 *.tmp
 *.wbo
-*.png
 *.backup
 
 # OS files
