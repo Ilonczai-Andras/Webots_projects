@@ -6,7 +6,6 @@ class State:
     TURN_180 = "TURN_180"
     FORWARD_TO_SECOND = "FORWARD_TO_SECOND" 
     TURN_RIGHT = "TURN_RIGHT"
-    TURN_RIGHT_UNTIL_CLEAR = "TURN_RIGHT_UNTIL_CLEAR"
     WALL_FOLLOWING = "WALL_FOLLOWING"
     STOPPED = "STOPPED"
 
@@ -152,28 +151,21 @@ class EPuckFSMController:
         print(f"Állapot: {self.current_state}")
         if self.detect_obstacle_front(sensors):
             print("Második akadály elérve, jobbra fordulás kezdése")
-            self.current_state = State.TURN_RIGHT_UNTIL_CLEAR
+            self.current_state = State.TURN_RIGHT
             self.turn_right()
         else:
             self.move_forward()
             
     def state_turn_right(self, sensors):
         """Jobbra fordulás, amíg bal oldali szenzor akadályt nem érzékel"""
+        print(f"Állapot: {self.current_state}")
         if self.detect_obstacle_left(sensors):
-            print("Bal oldali fal észlelve -> fal követés")
+            print("Bal oldali akadály észlelve, fal követés kezdése")
             self.current_state = State.WALL_FOLLOWING
             self.move_forward()
         else:
             self.turn_right()
-
-    def state_turn_right_until_clear(self, sensors):
-        """Jobbra fordulás addig, amíg az első szenzorok szabadok nem lesznek"""
-        if not self.detect_obstacle_front(sensors):
-            print("Előre szabad út, fal követés engedélyezve")
-            self.current_state = State.TURN_RIGHT
-        else:
-            self.turn_right()
-
+            
     def state_wall_following(self, sensors):
         print(f"Állapot: {self.current_state}")
         """Fal követése a bal oldalon"""
@@ -203,8 +195,6 @@ class EPuckFSMController:
             self.state_forward_to_second(sensors)
         elif self.current_state == State.TURN_RIGHT:
             self.state_turn_right(sensors)
-        elif self.current_state == State.TURN_RIGHT_UNTIL_CLEAR:
-            self.state_turn_right_until_clear(sensors)
         elif self.current_state == State.WALL_FOLLOWING:
             self.state_wall_following(sensors)
         elif self.current_state == State.STOPPED:
