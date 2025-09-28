@@ -117,6 +117,7 @@ class EPuckFSMController:
             self.move_forward()
     
     def state_turn_180(self):
+        print(f"Állapot: {self.current_state}")
         if not hasattr(self, "turn_initialized") or not self.turn_initialized:
             # Step 1: Initialize turn (only once when entering state)
             self.initial_yaw = self.get_yaw_angle(self.imu)
@@ -147,6 +148,7 @@ class EPuckFSMController:
            
     def state_forward_to_second(self, sensors):
         """Második akadály felé haladás"""
+        print(f"Állapot: {self.current_state}")
         if self.detect_obstacle_front(sensors):
             print("Második akadály elérve, jobbra fordulás kezdése")
             self.current_state = State.TURN_RIGHT
@@ -156,6 +158,7 @@ class EPuckFSMController:
             
     def state_turn_right(self, sensors):
         """Jobbra fordulás, amíg bal oldali szenzor akadályt nem érzékel"""
+        print(f"Állapot: {self.current_state}")
         if self.detect_obstacle_left(sensors):
             print("Bal oldali akadály észlelve, fal követés kezdése")
             self.current_state = State.WALL_FOLLOWING
@@ -164,6 +167,7 @@ class EPuckFSMController:
             self.turn_right()
             
     def state_wall_following(self, sensors):
+        print(f"Állapot: {self.current_state}")
         """Fal követése a bal oldalon"""
         if not self.detect_obstacle_left(sensors):
             print("Fal vége elérve, megállás")
@@ -173,6 +177,7 @@ class EPuckFSMController:
             self.move_forward()
             
     def state_stopped(self, sensors):
+        print(f"Állapot: {self.current_state}")
         """Megállási állapot"""
         self.stop_motors()
         
