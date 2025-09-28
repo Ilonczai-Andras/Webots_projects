@@ -2,12 +2,12 @@ from controller import Robot
 import math
 
 class State:
-    FORWARD_TO_FIRST = "FORWARD_TO_FIRST"
-    TURN_180 = "TURN_180"
-    FORWARD_TO_SECOND = "FORWARD_TO_SECOND" 
-    TURN_RIGHT = "TURN_RIGHT"
-    WALL_FOLLOWING = "WALL_FOLLOWING"
-    STOPPED = "STOPPED"
+    FORWARD_TO_FIRST = "FORWARD_TO_FIRST"  # Első akadály felé haladás
+    TURN_180 = "TURN_180"                  # 180°-os fordulás
+    FORWARD_TO_SECOND = "FORWARD_TO_SECOND"  # Második akadály felé haladás
+    TURN_RIGHT = "TURN_RIGHT"              # Jobbra fordulás
+    WALL_FOLLOWING = "WALL_FOLLOWING"      # Fal követés
+    STOPPED = "STOPPED"                    # Megállás
 
 class EPuckFSMController:
     def __init__(self):
@@ -15,18 +15,18 @@ class EPuckFSMController:
         self.robot = Robot()
         self.timestep = int(self.robot.getBasicTimeStep())
         if self.robot.getBasicTimeStep() != 64:
-            print(f"Warning: Using overridden TIME_STEP={64}ms.")
+            print(f"Figyelem: A TIME_STEP felülírva, {64}ms.")
             self.timestep = 64
         
         # Motorok inicializálása
         self.left_motor = self.robot.getDevice('left wheel motor')
         self.right_motor = self.robot.getDevice('right wheel motor')
-        self.left_motor.setPosition(float('inf'))
+        self.left_motor.setPosition(float('inf'))  # Végtelen pozíció, folyamatos forgás
         self.right_motor.setPosition(float('inf'))
-        self.left_motor.setVelocity(0.0)
+        self.left_motor.setVelocity(0.0)           # Kezdeti sebesség 0
         self.right_motor.setVelocity(0.0)
         
-        # Inertial Unit (IMU) inicializálása
+        # Inerciális egység (IMU) inicializálása
         self.imu = self.robot.getDevice('inertial unit')
         self.imu.enable(self.timestep)
         
@@ -39,32 +39,30 @@ class EPuckFSMController:
         
         # Paraméterek
         self.MAX_SPEED = 6.28  # rad/s
-        self.FRONT_DISTANCE_THRESHOLD = 80  # Szenzorérték ~0.05m távolságnak megfelelő
-        self.LEFT_DISTANCE_THRESHOLD = 80
-        self.TURN_SPEED = 2.5  # Optimális sebesség a hátsó szenzoros forduláshoz
-        self.FORWARD_SPEED = 4.0
-        self.TARGET_ANGLE = math.pi # 180 fok
+        self.FRONT_DISTANCE_THRESHOLD = 80  # Elülső szenzor küszöb (~0.05m)
+        self.LEFT_DISTANCE_THRESHOLD = 80   # Bal oldali szenzor küszöb
+        self.TURN_SPEED = 2.5                # Fordulási sebesség
+        self.FORWARD_SPEED = 4.0             # Előre haladási sebesség
+        self.TARGET_ANGLE = math.pi          # 180 fok
         
-        # FSM állapot
+        # FSM kezdeti állapot
         self.current_state = State.FORWARD_TO_FIRST
         
         print(f"Kezdő állapot: {self.current_state}")
         
     def get_yaw_angle(self, imu):
         """
-        Retrieves the current yaw angle (rotation around the vertical/y-axis) 
-        from the Inertial Unit.
-        
-        The IMU returns the Roll, Pitch, and Yaw in that order (x, y, z axis rotation).
-        We are interested in the Yaw (index 2).
+        Az aktuális yaw szög (függőleges tengely körüli elfordulás) lekérése.
+        Az IMU Roll, Pitch, Yaw értékeket ad vissza (x, y, z).
+        Mi a Yaw-ra (z-index) vagyunk kíváncsiak.
         """
         orientation = imu.getRollPitchYaw() 
         return orientation[2] 
 
     def normalize_angle(self, angle):
         """
-        Normalizes an angle to the range [-pi, pi].
-        This is crucial for robust angle comparison when crossing the +/- pi boundary.
+        Szög normalizálása [-pi, pi] tartományba.
+        Fontos az +/- pi határ átlépésekor történő összehasonlításnál.
         """
         while angle > math.pi:
             angle -= 2 * math.pi
@@ -86,7 +84,7 @@ class EPuckFSMController:
         self.set_motor_speeds(0.0, 0.0)
         
     def move_forward(self, speed=None):
-        """Előremenés"""
+        """Előre haladás"""
         if speed is None:
             speed = self.FORWARD_SPEED
         self.set_motor_speeds(speed, speed)
@@ -98,7 +96,7 @@ class EPuckFSMController:
         self.set_motor_speeds(speed, -speed)
             
     def detect_obstacle_front(self, sensors):
-        """Elülső akadály észlelése (ps0, ps7)"""
+        """Elülső akadály észlelése (ps0 és ps7 szenzorok)"""
         front_left = sensors[7]  # ps7
         front_right = sensors[0]  # ps0
         return front_left > self.FRONT_DISTANCE_THRESHOLD or front_right > self.FRONT_DISTANCE_THRESHOLD
@@ -119,31 +117,31 @@ class EPuckFSMController:
     def state_turn_180(self):
         print(f"Állapot: {self.current_state}")
         if not hasattr(self, "turn_initialized") or not self.turn_initialized:
-            # Step 1: Initialize turn (only once when entering state)
+            # Lépés 1: Fordulás inicializálása (csak egyszer az állapotváltáskor)
             self.initial_yaw = self.get_yaw_angle(self.imu)
             self.target_yaw = self.normalize_angle(self.initial_yaw + self.TARGET_ANGLE)
             self.turn_initialized = True
     
-            # Start rotation (left pivot)
+            # Fordítás indítása (balra pivot)
             self.set_motor_speeds(-self.MAX_SPEED / 8, self.MAX_SPEED / 8)
     
-            print(f"Turning 180°: Initial={math.degrees(self.initial_yaw):.2f}°, Target={math.degrees(self.target_yaw):.2f}°")
+            print(f"180° fordulás: Kezdő={math.degrees(self.initial_yaw):.2f}°, Cél={math.degrees(self.target_yaw):.2f}°")
     
-        # Step 2: Check progress
+        # Lépés 2: Haladás ellenőrzése
         current_yaw = self.get_yaw_angle(self.imu)
         angle_diff = self.normalize_angle(current_yaw - self.initial_yaw)
     
-        # Use tolerance for stopping
+        # Tolerancia a leállításhoz
         tolerance = 0.01
         if abs(abs(angle_diff) - self.TARGET_ANGLE) < tolerance:
-            # Turn complete
+            # Fordulás befejezve
             self.stop_motors()
-            print(f"Turn complete. Final Yaw={math.degrees(current_yaw):.2f}°")
+            print(f"Fordulás kész. Végső Yaw={math.degrees(current_yaw):.2f}°")
     
-            # Reset flags
+            # Flag-ek visszaállítása
             self.turn_initialized = False
     
-            # Next state
+            # Következő állapot
             self.current_state = State.FORWARD_TO_SECOND
            
     def state_forward_to_second(self, sensors):
