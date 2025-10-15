@@ -9,10 +9,13 @@ robot = Robot()
 timestep = int(robot.getBasicTimeStep())
 
 MAX_SPEED = 6.28                 # kerék maximális szögsebessége [rad/s]
-FORWARD_SPEED = MAX_SPEED / 5  # alap előremeneti sebesség (MAX_SPEED ötöde)
+FORWARD_SPEED = MAX_SPEED / 5    # alap előremeneti sebesség (MAX_SPEED ötöde)
 Kp = 0.0090                      # arányos szabályozó erősítés (hangolható)
-WHEEL_RADIUS = 0.0201            # kerék sugara [m]
+WHEEL_RADIUS = 0.0205            # kerék sugara [m]
 AXLE_LENGTH = 0.052              # tengelyhossz [m]
+
+goal_counter = 0
+GOAL_THRESHOLD = 29
 
 # --- Motorok beállítása ---
 leftMotor = robot.getDevice('left wheel motor')
@@ -41,7 +44,6 @@ print("Robot elindult, arányos vonalkövetés és odometria aktív...\n")
 while robot.step(timestep) != -1:
     # Szenzorértékek beolvasása
     g = [s.getValue() for s in ir_sensors]
-    print(g)
     
     # --- Arányos szabályozás a két szélső szenzor különbségére ---
     error = g[0] - g[2]   # bal - jobb szenzor
@@ -68,8 +70,21 @@ while robot.step(timestep) != -1:
     position_error = np.sqrt(xw**2 + yw**2)
 
     # --- Kiírás ---
-    #print(f"xw={xw:.3f} m | yw={yw:.3f} m | omegaz={math.degrees(omegaz):.2f}° | "
-    #      f"Hiba az origótól: {position_error:.3f} m")
+    print(f"xw={xw:.3f} m | yw={yw:.3f} m | omegaz={math.degrees(omegaz):.2f}° | "
+          f"Hiba az origótól: {position_error:.3f} m")
+          
+    if all(295 <= val <= 305 for val in g):
+        goal_counter += 1
+        print(f"Célvonal detektálás számláló: {goal_counter}")
+    else:
+        goal_counter = 0  # visszaállítjuk, ha kiesett a sávból
+
+    # Ha már 6 egymás utáni alkalommal a célvonalon van → megáll
+    if goal_counter >= GOAL_THRESHOLD:
+        print(f"\nCÉLVONAL ÉRZÉKELVE ({goal_counter} egymást követő alkalommal) → Robot megáll!\n")
+        leftMotor.setVelocity(0)
+        rightMotor.setVelocity(0)
+        break
 
     # --- Sebességek beállítása ---
     leftMotor.setVelocity(phildot)
