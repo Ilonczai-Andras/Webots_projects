@@ -11,7 +11,7 @@ timestep = int(robot.getBasicTimeStep())
 MAX_SPEED = 6.28                 # kerék maximális szögsebessége [rad/s]
 FORWARD_SPEED = MAX_SPEED / 5    # alap előremeneti sebesség (MAX_SPEED ötöde)
 Kp = 0.0090                      # arányos szabályozó erősítés (hangolható)
-WHEEL_RADIUS = 0.0205            # kerék sugara [m]
+WHEEL_RADIUS = 0.0201            # kerék sugara [m]
 AXLE_LENGTH = 0.052              # tengelyhossz [m]
 
 goal_counter = 0
@@ -58,8 +58,8 @@ while robot.step(timestep) != -1:
     delta_phi_l = phildot * TIME_STEP_SEC
     delta_phi_r = phirdot * TIME_STEP_SEC
 
-    delta_x_local = WHEEL_RADIUS * (delta_phi_l + delta_phi_r) / 2.0
-    delta_theta = WHEEL_RADIUS * (delta_phi_r - delta_phi_l) / AXLE_LENGTH
+    delta_x_local = (WHEEL_RADIUS * (delta_phi_l + delta_phi_r) / 2.0)
+    delta_theta = (WHEEL_RADIUS * (delta_phi_r - delta_phi_l) / AXLE_LENGTH)
 
     # Világkoordinátás pozíció frissítése
     omegaz += delta_theta
