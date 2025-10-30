@@ -1,0 +1,498 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puckGroundSensors.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/robotis/protos/RobotisLds01.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/kitchen/breakfast/protos/BiscuitBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/kitchen/breakfast/protos/HoneyJar.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/kitchen/breakfast/protos/JamJar.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 0.22508677252285486 0.28162751366775574 2.0294317614063977
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Solid {
+  translation 0.307 0.29 0
+  children [
+    Solid {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../21_line.png"
+              ]
+              repeatS FALSE
+              repeatT FALSE
+            }
+            roughness 1
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/parquetry/chequered_parquetry_roughness.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/parquetry/chequered_parquetry_normal.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/parquetry/chequered_parquetry_occlusion.jpg"
+              ]
+            }
+            textureTransform TextureTransform {
+              scale 0.5 0.5
+            }
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.5 -0.5 0
+                0.5 -0.5 0
+                -0.5 0.5 0
+                0.5 0.5 0
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0 0
+                2 0
+                0 2
+                2 2
+              ]
+            }
+            coordIndex [
+              2, 0, 1, 3, -1
+            ]
+            texCoordIndex [
+              2, 0, 1, 3, -1
+            ]
+          }
+        }
+      ]
+      name "floor"
+      model "floor"
+      boundingObject Plane {
+      }
+      locked TRUE
+    }
+    Solid {
+      translation 0.505 0 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+              ]
+            }
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 0.5 0.05
+                0.005 0.5 0.05
+                0.005 0.5 -0.05
+                -0.005 0.5 -0.05
+                -0.005 -0.5 -0.05
+                0.005 -0.5 -0.05
+                0.005 -0.5 0.05
+                -0.005 -0.5 0.05
+                -0.005 -0.5 0.05
+                0.005 -0.5 0.05
+                0.005 0.5 0.05
+                -0.005 0.5 0.05
+                0.005 -0.5 -0.05
+                -0.005 -0.5 -0.05
+                -0.005 0.5 -0.05
+                0.005 0.5 -0.05
+                -0.005 -0.5 -0.05
+                -0.005 -0.5 0.05
+                -0.005 0.5 0.05
+                -0.005 0.5 -0.05
+                0.005 -0.5 0.05
+                0.005 -0.5 -0.05
+                0.005 0.5 -0.05
+                0.005 0.5 0.05
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0.01 0.1
+                0 0.1
+                0 0
+                0.01 0
+                0 0
+                0.01 0
+                0.01 0.1
+                0 0.1
+                0 0.01
+                0 0
+                1 0
+                1 0.01
+                0 0.01
+                0 0
+                1 0
+                1 0.01
+                1 0
+                1 0.1
+                0 0.1
+                0 0
+                0 0.1
+                0 0
+                1 0
+                1 0.1
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1
+            ]
+            creaseAngle 1.5
+          }
+        }
+      ]
+      name "wall"
+      model "box"
+      boundingObject Box {
+        size 0.01 1 0.1
+      }
+    }
+    Solid {
+      translation -0.505 0 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+              ]
+            }
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.005 0.5 0.05
+                0.005 0.5 0.05
+                0.005 0.5 -0.05
+                -0.005 0.5 -0.05
+                -0.005 -0.5 -0.05
+                0.005 -0.5 -0.05
+                0.005 -0.5 0.05
+                -0.005 -0.5 0.05
+                -0.005 -0.5 0.05
+                0.005 -0.5 0.05
+                0.005 0.5 0.05
+                -0.005 0.5 0.05
+                0.005 -0.5 -0.05
+                -0.005 -0.5 -0.05
+                -0.005 0.5 -0.05
+                0.005 0.5 -0.05
+                -0.005 -0.5 -0.05
+                -0.005 -0.5 0.05
+                -0.005 0.5 0.05
+                -0.005 0.5 -0.05
+                0.005 -0.5 0.05
+                0.005 -0.5 -0.05
+                0.005 0.5 -0.05
+                0.005 0.5 0.05
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                0.01 0.1
+                0 0.1
+                0 0
+                0.01 0
+                0 0
+                0.01 0
+                0.01 0.1
+                0 0.1
+                0 0.01
+                0 0
+                1 0
+                1 0.01
+                0 0.01
+                0 0
+                1 0
+                1 0.01
+                1 0
+                1 0.1
+                0 0.1
+                0 0
+                0 0.1
+                0 0
+                1 0
+                1 0.1
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1
+            ]
+            creaseAngle 1.5
+          }
+        }
+      ]
+      name "wall#2"
+      model "box"
+      boundingObject Box {
+        size 0.01 1 0.1
+      }
+    }
+    Solid {
+      translation 0 0.505 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+              ]
+            }
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.51 0.005 0.05
+                0.51 0.005 0.05
+                0.51 0.005 -0.05
+                -0.51 0.005 -0.05
+                -0.51 -0.005 -0.05
+                0.51 -0.005 -0.05
+                0.51 -0.005 0.05
+                -0.51 -0.005 0.05
+                -0.51 -0.005 0.05
+                0.51 -0.005 0.05
+                0.51 0.005 0.05
+                -0.51 0.005 0.05
+                0.51 -0.005 -0.05
+                -0.51 -0.005 -0.05
+                -0.51 0.005 -0.05
+                0.51 0.005 -0.05
+                -0.51 -0.005 -0.05
+                -0.51 -0.005 0.05
+                -0.51 0.005 0.05
+                -0.51 0.005 -0.05
+                0.51 -0.005 0.05
+                0.51 -0.005 -0.05
+                0.51 0.005 -0.05
+                0.51 0.005 0.05
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                1 0.09803921568627451
+                0 0.09803921568627451
+                0 0
+                1 0
+                0 0
+                1 0
+                1 0.09803921568627451
+                0 0.09803921568627451
+                0 1
+                0 0
+                0.00980392156862745 0
+                0.00980392156862745 1
+                0 1
+                0 0
+                0.00980392156862745 0
+                0.00980392156862745 1
+                0.00980392156862745 0
+                0.00980392156862745 0.09803921568627451
+                0 0.09803921568627451
+                0 0
+                0 0.09803921568627451
+                0 0
+                0.00980392156862745 0
+                0.00980392156862745 0.09803921568627451
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1
+            ]
+            creaseAngle 1.5
+          }
+        }
+      ]
+      name "wall#3"
+      model "box"
+      boundingObject Box {
+        size 1.02 0.01 0.1
+      }
+    }
+    Solid {
+      translation 0 -0.505 0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_base_color.jpg"
+              ]
+            }
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_roughness.jpg"
+              ]
+            }
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/brushed_aluminium/brushed_aluminium_normal.jpg"
+              ]
+            }
+          }
+          geometry IndexedFaceSet {
+            coord Coordinate {
+              point [
+                -0.51 0.005 0.05
+                0.51 0.005 0.05
+                0.51 0.005 -0.05
+                -0.51 0.005 -0.05
+                -0.51 -0.005 -0.05
+                0.51 -0.005 -0.05
+                0.51 -0.005 0.05
+                -0.51 -0.005 0.05
+                -0.51 -0.005 0.05
+                0.51 -0.005 0.05
+                0.51 0.005 0.05
+                -0.51 0.005 0.05
+                0.51 -0.005 -0.05
+                -0.51 -0.005 -0.05
+                -0.51 0.005 -0.05
+                0.51 0.005 -0.05
+                -0.51 -0.005 -0.05
+                -0.51 -0.005 0.05
+                -0.51 0.005 0.05
+                -0.51 0.005 -0.05
+                0.51 -0.005 0.05
+                0.51 -0.005 -0.05
+                0.51 0.005 -0.05
+                0.51 0.005 0.05
+              ]
+            }
+            texCoord TextureCoordinate {
+              point [
+                1 0.09803921568627451
+                0 0.09803921568627451
+                0 0
+                1 0
+                0 0
+                1 0
+                1 0.09803921568627451
+                0 0.09803921568627451
+                0 1
+                0 0
+                0.00980392156862745 0
+                0.00980392156862745 1
+                0 1
+                0 0
+                0.00980392156862745 0
+                0.00980392156862745 1
+                0.00980392156862745 0
+                0.00980392156862745 0.09803921568627451
+                0 0.09803921568627451
+                0 0
+                0 0.09803921568627451
+                0 0
+                0.00980392156862745 0
+                0.00980392156862745 0.09803921568627451
+              ]
+            }
+            coordIndex [
+              0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1, 16, 17, 18, 19, -1, 20, 21, 22, 23, -1
+            ]
+            creaseAngle 1.5
+          }
+        }
+      ]
+      name "wall#4"
+      model "box"
+      boundingObject Box {
+        size 1.02 0.01 0.1
+      }
+    }
+  ]
+  name "rectangle arena"
+  model "rectangle arena"
+}
+HoneyJar {
+  translation 0.35 0.41 -0.010045440000000003
+}
+HoneyJar {
+  translation 0.57 0.27 -0.010045440000000003
+  name "honey jar(1)"
+}
+JamJar {
+  translation 0.42 0 -0.010045440000000003
+}
+JamJar {
+  translation 0.73 0.63 -0.010045440000000003
+  name "jam jar(1)"
+}
+E-puck {
+  translation 2.7795188555835605e-08 0.027995311612534796 -2.5889841917627054e-05
+  rotation 0.016415635431106492 -0.0162204243785062 0.9997336769091927 1.571066795718624
+  controller "line_follower_controller"
+  turretSlot [
+    RobotisLds01 {
+      rotation 0 0 1 -5.307179586466759e-06
+    }
+  ]
+  groundSensorsSlot [
+    E-puckGroundSensors {
+    }
+  ]
+}
+BiscuitBox {
+  translation -0.060000014491069245 0.5322555645445952 0.033212738376319835
+  rotation -0.02817118618489515 -0.9992060683052946 0.028171214578200467 1.5715897449195184
+}
+BiscuitBox {
+  translation 0.15522385706004801 0.5121786935441501 0.03321272411429619
+  rotation -0.15759045135832245 -0.9822227258282697 -0.10199885542085163 1.581313751029551
+  name "biscuit box(1)"
+}
+BiscuitBox {
+  translation 0.15103404439493137 0.23469702188393535 0.039967425542015406
+  rotation 0.12942787009349546 -0.9831059294653371 0.12942626430967213 1.5878388380342427
+  name "biscuit box(2)"
+}
