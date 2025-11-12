@@ -1,5 +1,6 @@
 """line_follower_controller controller."""
 
+from scipy import signal
 from controller import Robot
 import numpy as np
 import math
@@ -110,7 +111,7 @@ while robot.step(timestep) != -1:
     
         if 0 <= px < 300 and 0 <= py < 300:
 
-            map[px, py] = min(1.0, map[px, py] + 0.001)
+            map[px, py] = min(1.0, map[px, py] + 0.01)
             
             v = int(map[px, py] * 255)
             
@@ -169,3 +170,11 @@ while robot.step(timestep) != -1:
     # --- Sebességek beállítása ---
     leftMotor.setVelocity(phildot)
     rightMotor.setVelocity(phirdot)
+
+kernel = np.ones((40, 40))
+cmap = signal.convolve2d(map, kernel, mode='same')
+cspace = cmap > 0.9
+
+plt.imshow(cspace, cmap='cividis')
+plt.title("Konfigurációs tér")
+plt.show()
