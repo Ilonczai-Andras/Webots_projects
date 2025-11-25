@@ -1,0 +1,548 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/cabinet/protos/Cabinet.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/cabinet/protos/CabinetHandle.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/PaintedWood.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Ceiling.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Window.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/kitchen/fridge/protos/Fridge.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/kitchen/components/protos/Worktop.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/tables/protos/Table.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/lights/protos/CeilingLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/chairs/protos/Chair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/pal_robotics/tiago_lite/protos/TiagoLite.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/orbbec/protos/Astra.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/fruits/protos/Orange.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  fieldOfView 1.1
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position -1.8432099042339865 -1.0954785237396698 9.349268324309477
+  exposure 0.7999999999999999
+  followType "None"
+}
+TexturedBackground {
+  texture "empty_office"
+  skybox FALSE
+  skyColor [
+    0.2 0.2 0.2
+  ]
+}
+Cabinet {
+  translation 2.15 -1 0.83
+  rotation 0 0 1 3.14159
+  name "cabinet(1)"
+  depth 0.7
+  outerThickness 0.02
+  rowsHeights [
+    0.2, 0.2, 0.2, 0.2, 0.2, 0.34
+  ]
+  columnsWidths [
+    0.4
+  ]
+  layout [
+    "LeftSidedDoor (1, 1, 1, 6, 1.5)"
+    "Shelf (1,2, 1, 0)"
+    "Shelf (1,3, 1, 0)"
+    "Shelf (1,4, 1, 0)"
+    "Shelf (1,5, 1, 0)"
+    "Shelf (1,6, 1, 0)"
+  ]
+  handle CabinetHandle {
+    translation 0 0 -0.3
+    handleLength 0.1
+    handleRadius 0.008
+    handleColor 0.427451 0.513725 0.533333
+  }
+  primaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+  secondaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+}
+Cabinet {
+  translation -0.11 1.65 0.15
+  rotation 0 0 1 -1.5707953071795862
+  name "cabinet(2)"
+  depth 0.67
+  outerThickness 0.02
+  rowsHeights [
+    0.68, 0.25, 0.25, 0.25, 0.25, 0.34
+  ]
+  columnsWidths [
+    0.44
+  ]
+  layout [
+    "RightSidedDoor (1, 2, 1, 3, 1.5)"
+    "RightSidedDoor (1, 5, 1, 2, 1.5)"
+    "Shelf (1,2, 1, 0)"
+    "Shelf (1,3, 1, 0)"
+    "Shelf (1,4, 1, 0)"
+    "Shelf (1,5, 1, 0)"
+    "Shelf (1,6, 1, 0)"
+  ]
+  handle CabinetHandle {
+    translation 0 -0.15 0
+    handleLength 0.1
+    handleRadius 0.008
+    handleColor 0.427451 0.513725 0.533333
+  }
+  primaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+  secondaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+}
+Cabinet {
+  translation 2.15 -0.1 1.4
+  rotation 0 0 1 3.14159
+  name "cabinet(3)"
+  outerThickness 0.02
+  rowsHeights [
+    0.21, 0.21, 0.22
+  ]
+  columnsWidths [
+    0.44, 0.44, 0.44
+  ]
+  layout [
+    "RightSidedDoor (1, 1, 1, 3, 1.5)"
+    "LeftSidedDoor (2, 1, 1, 3, 1.5)"
+    "LeftSidedDoor (3, 1, 1, 3, 1.5)"
+    "Shelf (1, 2, 3, 0)"
+    "Shelf (1, 3, 2, 0)"
+    "Shelf (1, 1, 0, 1)"
+    "Shelf (2, 1, 0, 3)"
+  ]
+  handle CabinetHandle {
+    translation 0 -0.2 0
+    handleLength 0.1
+    handleRadius 0.008
+    handleColor 0.427451 0.513725 0.533333
+  }
+  primaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+  secondaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+}
+Cabinet {
+  translation 0.37 1.647 1.4
+  rotation 0 0 1 -1.5707953071795862
+  name "cabinet(4)"
+  outerThickness 0.02
+  rowsHeights [
+    0.21, 0.21, 0.22
+  ]
+  columnsWidths [
+    0.44
+  ]
+  layout [
+    "RightSidedDoor (1, 1, 1, 3, 1.5)"
+    "Shelf (1, 2 ,1 , 0)"
+    "Shelf (1, 3 ,1 , 0)"
+  ]
+  handle CabinetHandle {
+    translation 0 -0.2 0
+    handleLength 0.1
+    handleRadius 0.008
+    handleColor 0.427451 0.513725 0.533333
+  }
+  primaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+  secondaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+}
+Cabinet {
+  translation 0.79 1.48 0.15
+  rotation 0 0 1 -1.5707953071795862
+  name "cabinet(5)"
+  outerThickness 0.02
+  rowsHeights [
+    0.21, 0.21, 0.22
+  ]
+  columnsWidths [
+    0.34, 0.47, 0.47
+  ]
+  layout [
+    "RightSidedDoor (2, 1, 1, 3, 1.5)"
+    "LeftSidedDoor (3, 1, 1, 3, 1.5)"
+    "RightSidedDoor (1, 1, 1, 3, 1.5)"
+    "Shelf (1, 2, 1, 0)"
+    "Shelf (1, 3, 1, 0)"
+    "Shelf (1, 1, 0, 3)"
+    "Shelf (2, 1, 0, 3)"
+  ]
+  handle CabinetHandle {
+    translation 0 0 0.1
+    handleLength 0.1
+    handleRadius 0.008
+    handleColor 0.427451 0.513725 0.533333
+  }
+  primaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+  secondaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+}
+Cabinet {
+  translation 2.15 -0.12 0.15
+  rotation 0 0 1 3.14159
+  depth 0.7
+  outerThickness 0.02
+  rowsHeights [
+    0.25, 0.25, 0.14
+  ]
+  columnsWidths [
+    0.76, 0.54, 0.43, 0.43
+  ]
+  layout [
+    "LeftSidedDoor (2, 1, 1, 2, 1.5)"
+    "LeftSidedDoor (4, 1, 1, 3, 1.5)"
+    "RightSidedDoor (3, 1, 1, 3, 1.5)"
+    "Drawer (1, 1, 1, 1, 3.5)"
+    "Drawer (1, 2, 1, 1, 3.5)"
+    "Drawer (1, 3, 1, 1, 3.5)"
+    "Drawer (2, 3, 1, 1, 3.5)"
+    "Shelf (1, 2, 1, 0)"
+    "Shelf (1, 3, 2, 0)"
+    "Shelf (3, 2, 2, 0)"
+    "Shelf (1, 1, 0, 3)"
+    "Shelf (2, 1, 0, 3)"
+    "Shelf (3, 1, 0, 1)"
+  ]
+  handle CabinetHandle {
+    handleLength 0.1
+    handleRadius 0.008
+    handleColor 0.427451 0.513725 0.533333
+  }
+  primaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+  secondaryAppearance PaintedWood {
+    colorOverride 0.2 0.2 0.2
+  }
+}
+Floor {
+  translation 0 -0.17 0
+  rotation 0 0 1 1.5708
+  name "floor(1)"
+  size 3.6666 4.5
+  tileSize 1 1
+  appearance Parquetry {
+  }
+}
+Floor {
+  translation -0.5 -3 0
+  rotation 0 0 1 1.5708
+  size 2 3.5
+  tileSize 1 1
+  appearance Parquetry {
+  }
+}
+Ceiling {
+  translation 0 -1.1 2.4
+  size 4.7 5.9
+}
+Wall {
+  translation 1.8 1.75 0
+  rotation 0 0 1 1.5708
+  name "wall(1)"
+  size 0.2 0.7 2.4
+}
+Wall {
+  translation 2.25 -0.15 0
+  rotation 0 0 1 3.1416
+  name "wall(2)"
+  size 0.2 4 2.4
+}
+Wall {
+  translation -0.75 1.75 0
+  rotation 0 0 1 1.5708
+  name "wall(3)"
+  size 0.2 2.8 2.4
+}
+Wall {
+  translation -2.25 1.35 0
+  name "wall(4)"
+}
+Wall {
+  translation -2.25 -0.45 0
+  name "wall(5)"
+}
+Wall {
+  translation -2.25 -2.985 0
+  name "wall(6)"
+  size 0.2 2.07 2.4
+}
+Wall {
+  translation -0.5 -3.92 0
+  name "wall(7)"
+  size 3.3 0.2 2.4
+}
+Wall {
+  translation 1.25 -2.986 0
+  name "wall(8)"
+  size 0.2 2.07 2.4
+}
+Wall {
+  translation 1.75 -2.05 0
+  rotation 0 0 1 4.71239
+  size 0.2 0.8 2.4
+}
+SolidBox {
+  translation 1.55 -0.12 0.07
+  name "box(1)"
+  size 0.2 2.2 0.16
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 4 4
+    }
+  }
+}
+SolidBox {
+  translation 0.65 1.08 0.07
+  rotation 0 0 1 1.5708
+  name "box(2)"
+  size 0.2 2 0.16
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 4 4
+    }
+  }
+}
+SolidBox {
+  translation 1.9 -1.12 0.07
+  rotation 0 0 -1 4.71239
+  name "box(3)"
+  size 0.2 0.5 0.16
+  appearance PBRAppearance {
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 4 4
+    }
+  }
+}
+SolidBox {
+  translation -0.25 1.415 0.07
+  rotation 0 0 -1 6.28318
+  name "box(4)"
+  size 0.2 0.47 0.16
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 4 4
+    }
+  }
+}
+SolidBox {
+  translation -1.23 1.645 0.03
+  name "box(5)"
+  size 1.84 0.01 0.07
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 1 8
+    }
+  }
+}
+SolidBox {
+  translation -2.145 0.345 0.03
+  rotation 0 0 1 1.5708
+  name "box(6)"
+  size 2.59 0.01 0.07
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 1 8
+    }
+  }
+}
+SolidBox {
+  translation -2.145 -2.885 0.03
+  rotation 0 0 1 1.5708
+  name "box(7)"
+  size 1.87 0.01 0.07
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 1 8
+    }
+  }
+}
+SolidBox {
+  translation 1.645 -1.945 0.03
+  rotation 0 0 -1 3.14159
+  name "box(8)"
+  size 1.01 0.01 0.07
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 1 8
+    }
+  }
+}
+SolidBox {
+  translation 1.145 -2.88 0.03
+  rotation 0 0 1 4.71239
+  name "box(9)"
+  size 1.86 0.01 0.07
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 1 8
+    }
+  }
+}
+SolidBox {
+  translation -0.495 -3.815 0.03
+  rotation 0 0 1 3.14159
+  size 3.29 0.01 0.07
+  appearance PBRAppearance {
+    baseColor 0.8 0.8 0.8
+    roughness 0.5
+    metalness 0
+    textureTransform TextureTransform {
+      scale 1 8
+    }
+  }
+}
+Window {
+  translation -2.25 0.45 0
+  rotation 0 0 1 3.14159
+  name "window(1)"
+  bottomWallHeight 0.9
+  windowHeight 1
+  windowSillSize 0.01 0.05
+}
+Window {
+  translation 1.05 1.75 0
+  rotation 0 0 1 1.5708
+  bottomWallHeight 1.2
+  windowHeight 1
+  windowSillSize 0.01 0.05
+}
+Fridge {
+  translation 1.8 -1.57 0
+  rotation 0 0 -1 3.14159
+}
+Worktop {
+  translation 0.345 1.31 0.86
+  rotation 0 0 1 4.71239
+  name "worktop(1)"
+  size 0.7 0.43 0.06
+}
+Worktop {
+  translation 0.780001 1.003 0.86
+  rotation 0 0 1 4.71239
+  name "worktop(3)"
+  size 0.085 0.442 0.06
+}
+Worktop {
+  translation 1.22 1.306 0.86
+  rotation 0 0 -1 1.5708
+  name "worktop(4)"
+  size 0.69 0.44 0.06
+}
+Worktop {
+  translation 1.79 0.435 0.86
+  size 0.7 2.43 0.06
+}
+Table {
+  translation -1.21 1.31 0
+  rotation 0 0 1 3.14159
+  name "table(1)"
+  size 1.7 0.6 0.8
+}
+Table {
+  translation -0.65 -1.43 0
+  rotation 0 0 1 6.28319
+}
+CeilingLight {
+  translation -0.7 -1.5 2.4
+  pointLightColor 1 0.9764705882352941 0.9058823529411765
+  pointLightIntensity 4
+}
+Chair {
+  translation -0.64 -0.5 0
+  rotation 0 0 1 -1.5707953071795862
+  name "chair(1)"
+}
+Chair {
+  translation -0.64 -2.33 0
+  rotation 0 0 -1 -1.5707953071795862
+  name "chair(2)"
+}
+Chair {
+  translation -0.18 -1.87 0.01
+  rotation 0 0 -1 3.14159
+  name "chair(3)"
+}
+Chair {
+  translation -1.09 -1.05 0
+  name "chair(4)"
+}
+Chair {
+  translation -0.18 -1.05 0
+  rotation 0 0 -1 3.14159
+  name "chair(5)"
+}
+Chair {
+  translation -1.12 -1.87 0
+}
+TiagoLite {
+  translation -3.251583476537173e-06 6.154273023964021e-07 0.0945190390520381
+  rotation -0.1836346589570196 -0.9829945455379542 -0.0001883411013180149 3.360071663741089e-05
+  controller "final_project_controller"
+  supervisor TRUE
+  cameraSlot [
+    Display {
+    }
+    Compass {
+      translation -0.24 0 0
+      rotation 1 0 0 -1.5708
+    }
+    GPS {
+      translation -0.24 0 0
+      rotation 1 0 0 -1.5707953071795862
+    }
+    Astra {
+      translation -0.028 -0.035 -0.009
+      rotation 1 0 0 -1.5708
+    }
+  ]
+}
+DEF MARKER Orange {
+  translation 0.31 -0.15 0.04988228000000043
+}
