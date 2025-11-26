@@ -18,13 +18,14 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/pal_robotics/tiago_lite/protos/TiagoLite.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/orbbec/protos/Astra.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/fruits/protos/Orange.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Door.proto"
 
 WorldInfo {
 }
 Viewpoint {
   fieldOfView 1.1
   orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
-  position -1.8432099042339865 -1.0954785237396698 9.349268324309477
+  position -1.726858322474269 -1.1579465044165438 9.069809010642121
   exposure 0.7999999999999999
   followType "None"
 }
@@ -528,6 +529,8 @@ TiagoLite {
   supervisor TRUE
   cameraSlot [
     Display {
+      width 200
+      height 300
     }
     Compass {
       translation -0.24 0 0
@@ -544,5 +547,8 @@ TiagoLite {
   ]
 }
 DEF MARKER Orange {
-  translation 0.31 -0.15 0.04988228000000043
+  translation 0.42 -0.02 0.0498823
+}
+Door {
+  translation -2.25 -1.45 0
 }
