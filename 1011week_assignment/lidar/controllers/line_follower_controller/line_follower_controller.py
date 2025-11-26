@@ -114,7 +114,6 @@ while robot.step(timestep) != -1:
         
     D = w_T_r @ x_i
     
-    """
     # Valószínűségi térképezés
     for i in range(D.shape[1]):
         px, py = world2map(D[0, i], D[1, i])
@@ -129,7 +128,6 @@ while robot.step(timestep) != -1:
             color = (v * 256**2 + v * 256 + v)
             display.setColor(color)
             display.drawPixel(px, py)
-    """
     
     #plt.ion()
     #plt.plot(D[0, :], D[1, :], '.')
